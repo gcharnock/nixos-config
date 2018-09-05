@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
     ];
 
+  nixpkgs.config.allowUnfree = true;
+
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
@@ -50,6 +52,9 @@
     nodejs-8_x
     keepassx2
     keepassx2-http
+    jetbrains.pycharm-community
+    jetbrains.idea-community
+    jetbrains.webstorm
   ];
 
   virtualisation.docker.enable = true;
