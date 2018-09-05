@@ -45,6 +45,11 @@
     vim
     git
     htop
+    firefox
+    chromium
+    nodejs-8_x
+    keepassx2
+    keepassx2-http
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
