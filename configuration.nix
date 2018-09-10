@@ -28,7 +28,7 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "nodev"; # or "nodev" for efi only
 
-  # networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "symbinix"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Select internationalisation properties.
@@ -39,7 +39,7 @@
   };
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/London";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -55,9 +55,18 @@
     jetbrains.pycharm-community
     jetbrains.idea-community
     jetbrains.webstorm
+    ranger
+    dmenu
+    rxvt_unicode
+    feh
+    taffybar
+    pgcli
   ];
 
+  programs.bash.enableCompletion = true;
+
   virtualisation.docker.enable = true;
+  virtualisation.docker.liveRestore = false;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -69,6 +78,11 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.syncthing.enable = true;
+  services.syncthing.user = "gareth";
+  services.syncthing.group = "users";
+  
+  
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -94,19 +108,43 @@
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-  
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
-   
+
+  services.xserver.displayManager.sessionCommands = ''
+    xrandr --output VGA-2 --left-of VGA-1
+  '';
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.gdm.autoLogin.enable = true;
+  # services.xserver.displayManager.gdm.autoLogin.user = "gareth";
+
+  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.lightdm.autoLogin.enable = true;
+  services.xserver.displayManager.lightdm.autoLogin.user = "gareth";
+
+  services.xserver.desktopManager.gnome3.enable = false;
+  services.xserver.windowManager.xmonad.enable = true;
+  services.xserver.windowManager.xmonad.enableContribAndExtras = true;
+  services.xserver.windowManager.xmonad.extraPackages = hsPkgs: [ hsPkgs.taffybar ];
+
+  systemd.user.services."compton" = {
+    enable = true;
+    path = [ pkgs.compton ];
+    wantedBy = [ "default.target" ];
+    serviceConfig.Type = "forking";
+    serviceConfig.Restart = "always";
+    serviceConfig.RestartSepc = 2;
+    serviceConfig.ExecStart = "${pkgs.compton}/bin/compton -b";
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.gareth = {
     createHome = true;
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "docker"];
     home = "/home/gareth";
     isNormalUser = true;
     uid = 1000;
   };
+
+  security.sudo.wheelNeedsPassword = false;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
