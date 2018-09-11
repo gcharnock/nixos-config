@@ -67,6 +67,7 @@
     gnumake
     clang
     binutils
+    cabal2nix
   ];
 
   programs.bash.enableCompletion = true;
