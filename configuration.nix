@@ -65,6 +65,8 @@
     psmisc
     stack
     gnumake
+    clang
+    binutils
   ];
 
   programs.bash.enableCompletion = true;
