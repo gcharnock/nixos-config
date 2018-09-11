@@ -67,6 +67,8 @@
     gnumake
     clang
     binutils
+    ghc
+    haskell.compiler.ghc843
     cabal2nix
   ];
 
