@@ -24,6 +24,6 @@
     [ { device = "/dev/disk/by-uuid/f735e709-f724-4f65-b875-9710e2fd49f2"; }
     ];
 
-  nix.maxJobs = lib.mkDefault 1;
+  nix.maxJobs = lib.mkDefault 4;
   virtualisation.virtualbox.guest.enable = true;
 }
