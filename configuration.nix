@@ -63,6 +63,7 @@
     pgcli
     emacs
     psmisc
+    stack
   ];
 
   programs.bash.enableCompletion = true;
