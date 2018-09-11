@@ -61,6 +61,8 @@
     feh
     taffybar
     pgcli
+    emacs
+    psmisc
   ];
 
   programs.bash.enableCompletion = true;
@@ -126,7 +128,9 @@
   services.xserver.windowManager.xmonad.extraPackages = hsPkgs: [ hsPkgs.taffybar ];
 
 
-  systemd.user.targets."default.target".wants=[ "compton" ];
+  systemd.user.targets."default.target".wants=[ 
+    "compton" "emacs"
+  ];
 
   systemd.user.services."compton" = {
     enable = true;
@@ -136,6 +140,16 @@
     serviceConfig.Restart = "always";
     serviceConfig.RestartSpec = 2;
     serviceConfig.ExecStart = "${pkgs.compton}/bin/compton -b";
+  };
+
+  systemd.user.services."emacs" = {
+    enable = true;
+    description = "Emacs text editor";
+    serviceConfig.Type = "forking";
+    serviceConfig.Restart = "on-failure";
+    serviceConfig.RestartSpec = 2;
+    serviceConfig.ExecStart = "${pkgs.emacs}/bin/emacs --daemon";
+    serviceConfig.ExecStop = "${pkgs.emacs}/bin/emacsclient --eval \"(kill-emacs)\"";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
