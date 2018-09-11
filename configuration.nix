@@ -125,13 +125,16 @@
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.xmonad.extraPackages = hsPkgs: [ hsPkgs.taffybar ];
 
+
+  systemd.user.targets."default.target".wants=[ "compton" ];
+
   systemd.user.services."compton" = {
     enable = true;
+    description = "";
     path = [ pkgs.compton ];
-    wantedBy = [ "default.target" ];
     serviceConfig.Type = "forking";
     serviceConfig.Restart = "always";
-    serviceConfig.RestartSepc = 2;
+    serviceConfig.RestartSpec = 2;
     serviceConfig.ExecStart = "${pkgs.compton}/bin/compton -b";
   };
 
