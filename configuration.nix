@@ -64,6 +64,7 @@
     emacs
     psmisc
     stack
+    gnumake
   ];
 
   programs.bash.enableCompletion = true;
