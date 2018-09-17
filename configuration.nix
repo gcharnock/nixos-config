@@ -2,6 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
+let
+#  nixosUnstableOriginal = import ./nixos-unstable {};
+#  nixosUnstableConfigOriginal = nixosUnstableOriginal.config;
+#  nixosUnstableConfig = nixosUnstableConfigOriginal // { allowUnfree = true; };
+#  nixosUnstable = nixosUnstableOriginal // { config = nixosUnstableConfig ; };
+  nixosUnstable = import <nixos-unstable> {};
+in
 { config, pkgs, ... }:
 
 {
@@ -41,11 +48,14 @@
   # Set your time zone.
   time.timeZone = "Europe/London";
 
+  # editor
+  programs.vim.defaultEditor = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
-    git
+    gitFull
     htop
     firefox
     chromium
@@ -63,7 +73,7 @@
     pgcli
     emacs
     psmisc
-    stack
+    nixosUnstable.stack
     gnumake
     clang
     binutils
@@ -143,6 +153,7 @@
     enable = true;
     description = "";
     path = [ pkgs.compton ];
+    wantedBy = [ "default.target" ];
     serviceConfig.Type = "forking";
     serviceConfig.Restart = "always";
     serviceConfig.RestartSpec = 2;
