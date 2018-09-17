@@ -80,6 +80,7 @@ in
     ghc
     haskell.compiler.ghc843
     cabal2nix
+    evince
   ];
 
   programs.bash.enableCompletion = true;
