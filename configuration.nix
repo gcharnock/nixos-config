@@ -81,6 +81,9 @@ in
     haskell.compiler.ghc843
     cabal2nix
     evince
+    nitrogen
+    termite
+    pavucontrol
   ];
 
   programs.bash.enableCompletion = true;
@@ -114,8 +117,8 @@ in
   # services.printing.enable = true;
 
   # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -142,7 +145,7 @@ in
 
   services.xserver.desktopManager.gnome3.enable = false;
   services.xserver.windowManager.xmonad.enable = true;
-  services.xserver.windowManager.xmonad.enableContribAndExtras = true;
+  #services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.xmonad.extraPackages = hsPkgs: [ hsPkgs.taffybar ];
 
 
@@ -174,7 +177,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.gareth = {
     createHome = true;
-    extraGroups = ["wheel" "docker"];
+    extraGroups = ["wheel" "docker" "audio"];
     home = "/home/gareth";
     isNormalUser = true;
     uid = 1000;
