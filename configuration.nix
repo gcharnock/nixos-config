@@ -36,6 +36,9 @@ in
   boot.loader.grub.device = "nodev"; # or "nodev" for efi only
 
   networking.hostName = "symbinix"; # Define your hostname.
+  networking.hosts = {
+    "172.17.0.1" = [ "docker" ];
+  };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Select internationalisation properties.
@@ -84,6 +87,8 @@ in
     nitrogen
     termite
     pavucontrol
+    qutebrowser
+    docker_compose
   ];
 
   programs.bash.enableCompletion = true;
@@ -147,6 +152,10 @@ in
   services.xserver.windowManager.xmonad.enable = true;
   #services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.xmonad.extraPackages = hsPkgs: [ hsPkgs.taffybar ];
+
+  services.dockerRegistry = {
+    enable = true;
+  };
 
 
   systemd.user.targets."default.target".wants=[ 
