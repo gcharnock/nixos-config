@@ -89,6 +89,7 @@ in
     pavucontrol
     qutebrowser
     docker_compose
+    cabal-install
   ];
 
   programs.bash.enableCompletion = true;
