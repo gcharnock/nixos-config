@@ -83,6 +83,7 @@ in
     ghc
     haskell.compiler.ghc843
     cabal2nix
+    stack2nix
     evince
     nitrogen
     termite
@@ -157,6 +158,17 @@ in
   services.dockerRegistry = {
     enable = true;
   };
+
+  # services.nginx = {
+  #   enable = true;
+  #   config = ''
+  #     server {
+  #       location /pgadmin/ {
+  #         proxy_pass http://docker:8090;
+  #       }
+  #     }
+  #   '';
+  # };
 
 
   systemd.user.targets."default.target".wants=[ 
