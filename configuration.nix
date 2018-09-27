@@ -91,6 +91,7 @@ in
     qutebrowser
     docker_compose
     cabal-install
+    wget
   ];
 
   programs.bash.enableCompletion = true;
