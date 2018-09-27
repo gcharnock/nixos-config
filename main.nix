@@ -97,6 +97,15 @@ in
     hdparm
   ];
 
+  # fonts
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    noto-fonts-emoji
+    font-awesome_5
+  ];
+
   programs.bash.enableCompletion = true;
 
   virtualisation.docker.enable = true;
