@@ -19,6 +19,18 @@ in
   nixpkgs.config.chromium.enablePepperFlash = true;
   nixpkgs.config.chromium.enablePepperPDF = true;
 
+    
+
+  nix = {
+    binaryCaches = [
+      "https://hie-nix.cachix.org"
+    ];
+    binaryCachePublicKeys = [
+      "hie-nix.cachix.org-1:EjBSHzF6VmDnzqlldGXbi0RM3HdjfTU3yDRi9Pd0jTY="
+    ];
+  };
+
+
   # Use the GRUB 2 boot loader.
   # boot.loader.grub.enable = true;
   # boot.loader.grub.version = 2;
@@ -104,6 +116,7 @@ in
     hdparm
     tdesktop
     telegram-cli
+    cachix
   ];
 
   # fonts
