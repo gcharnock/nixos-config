@@ -126,6 +126,7 @@ in
     cachix
     wget
     hie-nix.hies
+    vscode
   ];
 
   # fonts
