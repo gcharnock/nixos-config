@@ -180,6 +180,10 @@ in
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+  hardware.opengl = {
+    driSupport = true;
+  };
+  hardware.bumblebee.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -208,6 +212,12 @@ in
   services.xserver.windowManager.xmonad.enable = true;
   #services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.xmonad.extraPackages = hsPkgs: [ hsPkgs.taffybar ];
+
+  services.xserver.videoDrivers = [
+    "intel"
+    "vesa"
+    "modesetting" 
+  ];
 
   services.dockerRegistry = {
     enable = true;
