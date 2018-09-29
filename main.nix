@@ -12,7 +12,7 @@ in
   imports =
     if hostName == "wayfarer"
       then [ ./hardware-configuration-wayfarer.nix ]
-      else [ ./hardware-configuration-symbinix ] ;
+      else [ ./hardware-configuration-symbinix.nix ] ;
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.firefox.enableAdobieFlash = true;
@@ -51,8 +51,10 @@ in
   networking.hosts = {
     "172.17.0.1" = [ "docker" ];
   };
+
   networking.wireless = {
-    enable = true;  # Enables wireless support via wpa_supplicant.
+    # Enables wireless support via wpa_supplicant.
+    enable = hostName == "wayfarer";  
     networks = redacted.networks;
   };
 
@@ -102,6 +104,7 @@ in
     ghc
     haskell.compiler.ghc843
     cabal2nix
+    stack2nix
     evince
     nitrogen
     termite
@@ -117,6 +120,7 @@ in
     tdesktop
     telegram-cli
     cachix
+    wget
   ];
 
   # fonts
