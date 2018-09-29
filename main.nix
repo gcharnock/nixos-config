@@ -7,7 +7,9 @@ let
   redacted = import /root/redacted.nix;
 in
 { config, pkgs, hostName,... }:
-
+let
+  hie-nix = import ./hie-nix { pkgs = pkgs; };
+in
 {
   imports =
     if hostName == "wayfarer"
@@ -123,6 +125,7 @@ in
     telegram-cli
     cachix
     wget
+    hie-nix.hies
   ];
 
   # fonts
