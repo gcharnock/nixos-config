@@ -102,6 +102,8 @@ in
     powertop
     home-manager
     hdparm
+    tdesktop
+    telegram-cli
   ];
 
   # fonts
