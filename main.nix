@@ -15,6 +15,9 @@ in
       else [ ./hardware-configuration-symbinix ] ;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.firefox.enableAdobieFlash = true;
+  nixpkgs.config.chromium.enablePepperFlash = true;
+  nixpkgs.config.chromium.enablePepperPDF = true;
 
   # Use the GRUB 2 boot loader.
   # boot.loader.grub.enable = true;
@@ -48,6 +51,10 @@ in
     defaultLocale = "en_GB.UTF-8";
   };
 
+  powerManagement.powerUpCommands = ''
+    ${pkgs.hdparm}/sbin/hdparm -Y /dev/sdb
+  '';
+
   # Set your time zone.
   time.timeZone = "Europe/London";
 
@@ -60,8 +67,8 @@ in
     vim
     gitFull
     htop
-    firefox
     chromium
+    firefoxWrapper
     nodejs-8_x
     keepassx2
     keepassx2-http
@@ -104,6 +111,11 @@ in
     noto-fonts-emoji
     noto-fonts-emoji
     font-awesome_5
+    siji
+    roboto
+    roboto-mono
+    roboto-slab
+    material-icons
   ];
 
   programs.bash.enableCompletion = true;
