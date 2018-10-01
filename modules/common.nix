@@ -55,7 +55,6 @@ in
     dmenu
     rxvt_unicode
     feh
-    taffybar
     pgcli
     emacs
     psmisc

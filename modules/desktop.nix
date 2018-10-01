@@ -56,4 +56,7 @@
     serviceConfig.ExecStop = "${pkgs.emacs}/bin/emacsclient --eval \"(kill-emacs)\"";
   };
 
+  environment.systemPackages = with pkgs; [
+    taffybar
+  ];
 }
