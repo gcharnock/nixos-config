@@ -58,6 +58,7 @@ in
     hdparm
     cachix
     wget
+    unzip
   ];
 
   # fonts
