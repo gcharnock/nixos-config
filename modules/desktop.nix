@@ -15,15 +15,22 @@
   services.xserver.displayManager.sessionCommands = ''
     xrandr --output VGA-2 --left-of VGA-1
   '';
+  services.xserver.desktopManager.xterm.enable = false;
 
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.lightdm.autoLogin.enable = true;
-  services.xserver.displayManager.lightdm.autoLogin.user = "gareth";
+  #services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.displayManager.lightdm.autoLogin.enable = true;
+  #services.xserver.displayManager.lightdm.autoLogin.user = "gareth";
+
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.autoLogin.enable = true;
+  services.xserver.displayManager.gdm.autoLogin.user = "gareth";
 
   services.xserver.desktopManager.gnome3.enable = false;
   services.xserver.windowManager.xmonad.enable = true;
   #services.xserver.windowManager.xmonad.enableContribAndExtras = true;
   services.xserver.windowManager.xmonad.extraPackages = hsPkgs: [ hsPkgs.taffybar ];
+
+  services.xserver.desktopManager.default = "none";
 
   programs.slock.enable = true;
 
