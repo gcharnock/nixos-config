@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-   hie-nix = import ./hie-nix { pkgs = pkgs; };
+   hie-nix = import ../hie-nix { };
 in
 {
   nix = {
