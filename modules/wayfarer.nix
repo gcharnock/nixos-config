@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }:
 {
+  networking.hostName = "wayfarer";
+  
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
