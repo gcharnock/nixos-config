@@ -57,6 +57,26 @@
   };
 
   environment.systemPackages = with pkgs; [
+    gitFull
+    chromium
+    firefoxWrapper
+    keepassx2
+    keepassx2-http
+    jetbrains.pycharm-community
+    jetbrains.idea-community
+    jetbrains.webstorm
+    dmenu
+    rxvt_unicode
+    feh
+    evince
+    nitrogen
+    termite
+    pavucontrol
+    qutebrowser
+    termite
+    powertop
+    tdesktop
     taffybar
+    vscode
   ];
 }

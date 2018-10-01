@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 let
-  nixosUnstable = import <nixos-unstable> {};
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -41,48 +40,24 @@ in
 
   environment.systemPackages = with pkgs; [
     vim
-    gitFull
+    git
     htop
-    chromium
-    firefoxWrapper
     nodejs-8_x
-    keepassx2
-    keepassx2-http
-    jetbrains.pycharm-community
-    jetbrains.idea-community
-    jetbrains.webstorm
     ranger
     dmenu
-    rxvt_unicode
-    feh
     pgcli
     emacs
     psmisc
-    nixosUnstable.stack
     gnumake
     clang
     binutils
-    ghc
-    haskell.compiler.ghc843
-    cabal2nix
-    stack2nix
-    evince
-    nitrogen
-    termite
-    pavucontrol
-    qutebrowser
     docker_compose
-    cabal-install
-    termite
     tmux
     powertop
     home-manager
     hdparm
-    tdesktop
-    telegram-cli
     cachix
     wget
-    vscode
   ];
 
   # fonts
