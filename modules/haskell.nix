@@ -10,6 +10,7 @@ in
     stack2nix
     cabal-install
     nixosUnstable.stack
+    haskellPackages.brittany
   ];
 }
 
