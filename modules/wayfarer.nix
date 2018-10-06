@@ -13,6 +13,7 @@
 
   powerManagement.powerUpCommands = ''
     ${pkgs.hdparm}/sbin/hdparm -Y /dev/sdb
+    setxkbmap --options ctrl:nocaps
   '';
 
   # This value determines the NixOS release with which your system is to be
