@@ -40,7 +40,6 @@ in
 
   environment.systemPackages = with pkgs; [
     vim
-    git
     htop
     nodejs-8_x
     ranger
