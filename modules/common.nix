@@ -12,6 +12,7 @@ in
   time.timeZone = "Europe/London";
 
   programs.vim.defaultEditor = true;
+  boot.cleanTmpDir = true;
 
   services.dockerRegistry = {
     enable = true;
