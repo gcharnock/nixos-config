@@ -87,5 +87,6 @@
     taffybar
     vscode
     spotify
+    twmn
   ];
 }
