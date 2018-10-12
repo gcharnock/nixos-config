@@ -36,7 +36,7 @@
   programs.slock.enable = true;
 
   systemd.user.targets."default.target".wants=[ 
-    "compton" "emacs"
+    "compton"
   ];
 
   nixpkgs.config.firefox.enableAdobieFlash = true;
@@ -54,14 +54,17 @@
     serviceConfig.ExecStart = "${pkgs.compton}/bin/compton -b";
   };
 
-  systemd.user.services."emacs" = {
+  systemd.user.services."keynav" = {
     enable = true;
-    description = "Emacs text editor";
-    serviceConfig.Type = "forking";
-    serviceConfig.Restart = "on-failure";
-    serviceConfig.RestartSpec = 2;
-    serviceConfig.ExecStart = "${pkgs.emacs}/bin/emacs --daemon";
-    serviceConfig.ExecStop = "${pkgs.emacs}/bin/emacsclient --eval \"(kill-emacs)\"";
+    description = "Ditch the mouse";
+    path = [ pkgs.keynav ];
+    wantedBy = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      Restart = "always";
+      RestartSpec = 2;
+      ExecStart = "${pkgs.keynav}/bin/keynav";
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -88,5 +91,6 @@
     vscode
     spotify
     twmn
+    keynav
   ];
 }
