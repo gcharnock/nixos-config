@@ -67,6 +67,28 @@
     };
   };
 
+  # Not sure if this is the best way to do this...
+  systemd.user.services."xmonad-pipes" = {
+    enable= true;
+    description = "FIFO for XMonad window name";
+    wantedBy = [ "default.target" ];
+    script = ''
+      WINDOW_NAME=''${HOME}/var/xmonad-window-name.fifo;
+      WORKSPACE_NAME=''${HOME}/var/xmonad-workspace.fifo;
+
+      if [ ! -e ''${WINDOW_NAME} ]; then
+	      ${pkgs.coreutils}/bin/mkfifo ''${WINDOW_NAME};
+      fi
+
+      if [ ! -e ''${WORKSPACE_NAME} ]; then
+	      ${pkgs.coreutils}/bin/mkfifo ''${WORKSPACE_NAME};
+      fi
+    '';
+    serviceConfig = {
+       Restart = "no";
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     gitFull
     chromium
