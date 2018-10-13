@@ -25,7 +25,7 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      extraPackages = hsPkgs: [ hsPkgs.taffybar ];
+      extraPackages = hsPkgs: [ ];
     };
     windowManager.default = "xmonad";
 
@@ -109,7 +109,6 @@
     termite
     powertop
     tdesktop
-    taffybar
     vscode
     spotify
     twmn
