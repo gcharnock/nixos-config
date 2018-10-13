@@ -9,6 +9,7 @@
     ./modules/nvidia-drivers.nix
     ./modules/wireless.nix
     ./modules/haskell.nix
+    ./modules/scripts.nix
   ];
 }
 

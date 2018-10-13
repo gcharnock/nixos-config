@@ -76,7 +76,7 @@
       Type = "forking";
       Restart = "always";
       RestartSpec = 2;
-      ExecStart = ''${pkgs.xcape}/bin/xcape -e "Hyper_L=Tab;Hyper_R=backslash;Shift_L=Escape"'';
+      ExecStart = ''${pkgs.xcape}/bin/xcape -e "Hyper_L=Tab;Hyper_R=Return;Shift_L=Escape"'';
     };
   };
 
