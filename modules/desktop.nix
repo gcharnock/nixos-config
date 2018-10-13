@@ -67,6 +67,19 @@
     };
   };
 
+  systemd.user.services."xcape" = {
+    enable = true;
+    description = "Map isolated taps of modifier keys to keycodes";
+    path = [ pkgs.xcape ];
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Type = "forking";
+      Restart = "always";
+      RestartSpec = 2;
+      ExecStart = ''${pkgs.xcape}/bin/xcape -e "Hyper_L=Tab;Hyper_R=backslash;Shift_L=Escape"'';
+    };
+  };
+
   # Not sure if this is the best way to do this...
   systemd.user.services."xmonad-pipes" = {
     enable= true;
