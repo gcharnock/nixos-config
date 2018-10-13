@@ -5,9 +5,11 @@ in
   nixpkgs.config.allowUnfree = true;
 
   i18n = {
-    consoleKeyMap = "uk";
+    #consoleKeyMap = "uk";
     defaultLocale = "en_GB.UTF-8";
+    consoleUseXkbConfig = true;
   };
+  
   
   time.timeZone = "Europe/London";
 

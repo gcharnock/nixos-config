@@ -5,33 +5,33 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "gb";
+  services.xserver = {
+    enable = true;
+    layout = "gb";
 
-  # Enable touchpad support.
-  services.xserver.libinput.enable = true;
+    # Enable touchpad support.
+    libinput.enable = true;
 
-  services.xserver.displayManager.sessionCommands = ''
+    displayManager.sessionCommands = ''
     xrandr --output VGA-2 --left-of VGA-1
-  '';
-  services.xserver.desktopManager.xterm.enable = true;
+    '';
 
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.lightdm.autoLogin.enable = true;
-  services.xserver.displayManager.lightdm.autoLogin.user = "gareth";
+    desktopManager.xterm.enable = true;
 
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.displayManager.gdm.autoLogin.enable = true;
-  # services.xserver.displayManager.gdm.autoLogin.user = "gareth";
+    displayManager.lightdm.enable = true;
+    displayManager.lightdm.autoLogin.enable = true;
+    displayManager.lightdm.autoLogin.user = "gareth";
 
-  services.xserver.desktopManager.gnome3.enable = false;
-  services.xserver.windowManager.xmonad.enable = true;
-  #services.xserver.windowManager.xmonad.enableContribAndExtras = true;
-  services.xserver.windowManager.xmonad.extraPackages = hsPkgs: [ hsPkgs.taffybar ];
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+      extraPackages = hsPkgs: [ hsPkgs.taffybar ];
+    };
+    windowManager.default = "xmonad";
 
-  services.xserver.windowManager.default = "xmonad";
-  # services.xserver.desktopManager.default = "";
+    xkbOptions = "ctrl:nocaps";
+  };
+
 
   programs.slock.enable = true;
 
