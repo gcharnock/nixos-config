@@ -1,4 +1,8 @@
 { config, lib, pkgs, ... }:
+let minecraft-optirun = pkgs.writeShellScriptBin "minecraft-optirun" ''
+  ${pkgs.steam-run}/bin/steam-run ${pkgs.bumblebee}/bin/optirun ${pkgs.minecraft}/bin/minecraft;
+'';
+in
 {
   networking.hostName = "wayfarer";
   
@@ -20,6 +24,7 @@
 
   environment.systemPackages = with pkgs; [
     autorandr
+    minecraft-optirun
   ];
 
   # This value determines the NixOS release with which your system is to be
@@ -27,4 +32,7 @@
   # servers. You should change this only after NixOS release notes say you
   # should.
   system.stateVersion = "18.03"; # Did you read the comment?
+
+
+  
 }
