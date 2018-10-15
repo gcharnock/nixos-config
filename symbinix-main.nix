@@ -8,5 +8,6 @@
     ./modules/symbinix.nix
     ./modules/hie.nix
     ./modules/haskell.nix
+    ./modules/scripts.nix
   ];
 }
