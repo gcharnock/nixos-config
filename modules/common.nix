@@ -63,6 +63,8 @@ in
     unzip
     python3
     openssl
+    gcc
+    pypi2nix
   ];
 
   # fonts
