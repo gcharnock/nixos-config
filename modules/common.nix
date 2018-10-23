@@ -61,6 +61,8 @@ in
     cachix
     wget
     unzip
+    python3
+    openssl
   ];
 
   # fonts
