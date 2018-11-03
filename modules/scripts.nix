@@ -1,5 +1,6 @@
 { config, lib, pkgs, ... }:
-let setup-keyboard = pkgs.writeShellScriptBin "setup-keyboard" ''
+let
+programer-mode = pkgs.writeShellScriptBin "programer-mode" ''
   setxkbmap -option "ctrl:nocaps";
   ${pkgs.xorg.xmodmap}/bin/xmodmap -e "keycode 23=Super_L";
   ${pkgs.xorg.xmodmap}/bin/xmodmap -e "keycode any=Tab";
@@ -8,10 +9,17 @@ let setup-keyboard = pkgs.writeShellScriptBin "setup-keyboard" ''
   ${pkgs.xorg.xmodmap}/bin/xmodmap -e "add mod3 = Hyper_R";
   ${pkgs.systemd}/bin/systemctl --user restart xcape;
 '';
+normal-mode = pkgs.writeShellScriptBin "normal-mode" ''
+  setxkbmap -option "ctrl:nocaps";
+  ${pkgs.xorg.xmodmap}/bin/xmodmap -e "keycode 23=Tab";
+  ${pkgs.xorg.xmodmap}/bin/xmodmap -e "keycode 36=Return";
+'';
+
 in
 {
   environment.systemPackages = with pkgs; [
-    setup-keyboard
+    programer-mode
+    normal-mode
   ];
 }
 
