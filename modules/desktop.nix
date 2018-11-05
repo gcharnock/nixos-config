@@ -1,4 +1,6 @@
 { config, lib, pkgs, ... }:
+let myxmonad = import /home/gareth/dev/xmonad-config {};
+in
 {
 
   # Enable sound.
@@ -25,7 +27,7 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      extraPackages = hsPkgs: [ ];
+      extraPackages = hsPkgs: [ myxmonad ];
     };
     windowManager.default = "xmonad";
 
