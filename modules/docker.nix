@@ -6,4 +6,8 @@
   networking.hosts = {
     "172.17.0.1" = [ "docker" ];
   };
+
+  environment.systemPackages = with pkgs; [
+    docker_compose
+  ];
 }

@@ -51,9 +51,7 @@ in
     emacs
     psmisc
     gnumake
-    clang
     binutils
-    docker_compose
     tmux
     powertop
     home-manager
@@ -65,6 +63,7 @@ in
     openssl
     gcc
     pypi2nix
+    libxml2
   ];
 
   # fonts

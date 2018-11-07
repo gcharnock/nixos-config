@@ -13,6 +13,7 @@ normal-mode = pkgs.writeShellScriptBin "normal-mode" ''
   setxkbmap -option "ctrl:nocaps";
   ${pkgs.xorg.xmodmap}/bin/xmodmap -e "keycode 23=Tab";
   ${pkgs.xorg.xmodmap}/bin/xmodmap -e "keycode 36=Return";
+  ${pkgs.systemd}/bin/systemctl --user stop xcape;
 '';
 
 in

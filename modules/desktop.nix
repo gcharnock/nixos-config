@@ -132,5 +132,8 @@
     spotify
     twmn
     keynav
+    xorg.xmodmap
+    meld
+    xorg.xev
   ];
 }
