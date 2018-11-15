@@ -64,6 +64,7 @@ in
     gcc
     pypi2nix
     libxml2
+    imagemagick
   ];
 
   # fonts
