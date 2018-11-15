@@ -135,5 +135,7 @@
     xorg.xmodmap
     meld
     xorg.xev
+    inkscape
+    gnumeric
   ];
 }
