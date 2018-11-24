@@ -19,7 +19,7 @@
     desktopManager.xterm.enable = true;
 
     displayManager.lightdm.enable = true;
-    displayManager.lightdm.autoLogin.enable = true;
+    displayManager.lightdm.autoLogin.enable = false; # Autologin isn't working well with XMonand right now.
     displayManager.lightdm.autoLogin.user = "gareth";
 
     windowManager.xmonad = {
