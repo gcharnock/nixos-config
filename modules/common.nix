@@ -9,7 +9,10 @@ in
     defaultLocale = "en_GB.UTF-8";
     consoleUseXkbConfig = true;
   };
-  
+ 
+  # Don't make everything unresponseive 
+  nix.daemonIONiceLevel = 5;
+  nix.daemonNiceLevel = 10;
   
   time.timeZone = "Europe/London";
 
