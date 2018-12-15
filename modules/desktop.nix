@@ -45,8 +45,8 @@
     "compton"
   ];
 
-  nixpkgs.config.firefox.enableAdobieFlash = true;
-  nixpkgs.config.chromium.enablePepperFlash = true;
+  nixpkgs.config.firefox.enableAdobieFlash = false;
+  nixpkgs.config.chromium.enablePepperFlash = false;
   nixpkgs.config.chromium.enablePepperPDF = true;
 
   systemd.user.services."compton" = {
@@ -133,6 +133,7 @@
     twmn
     keynav
     xorg.xmodmap
+    xorg.xkill
     meld
     xorg.xev
     inkscape
