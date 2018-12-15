@@ -4,6 +4,7 @@
 
   hardware.opengl = {
     driSupport = true;
+    driSupport32Bit = true;
   };
   hardware.bumblebee.enable = true;
 

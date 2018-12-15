@@ -13,6 +13,13 @@ in
   # Don't make everything unresponseive 
   nix.daemonIONiceLevel = 5;
   nix.daemonNiceLevel = 10;
+
+  nix.gc.automatic = true;
+  nix.gc.dates = "13:00";
+  nix.gc.options = "--delete-older-than=20d";
+
+  nix.optimise.automatic = true;
+  nix.optimise.dates = ["14:00"];
   
   time.timeZone = "Europe/London";
 
