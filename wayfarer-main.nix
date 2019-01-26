@@ -10,6 +10,7 @@
     ./modules/wireless.nix
     ./modules/haskell.nix
     ./modules/scripts.nix
+    ./modules/automount.nix
   ];
 }
 

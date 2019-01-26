@@ -76,6 +76,7 @@ in
     libxml2
     imagemagick
     postgresql100  # For command line tools like pg_dump
+    ntfs3g
   ];
 
   # fonts

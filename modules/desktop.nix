@@ -138,5 +138,7 @@
     xorg.xev
     inkscape
     gnumeric
+    xdotool
+    vlc
   ];
 }
