@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  networking.hostName = "symbinix";
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -14,15 +13,26 @@
     preLVM = true;
   }];
 
-  # I need to stop procrastinating. 
-  networking.hosts = {
-    "127.0.0.1" = [
-      "bbc.co.uk" 
-      "www.bbc.co.uk" 
-      "reddit.com" 
-      "www.reddit.com" 
+  networking = {
+    hostName = "symbinix";
+
+    # I need to stop procrastinating. 
+    hosts = {
+      "127.0.0.1" = [
+        "bbc.co.uk" 
+        "www.bbc.co.uk" 
+        "reddit.com" 
+        "www.reddit.com" 
+      ];
+    };
+    nameservers = [
+      "10.32.1.2"
+      "172.20.1.9"
+      "10.32.1.1"
     ];
+    firewall.enable = false;
   };
+
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
